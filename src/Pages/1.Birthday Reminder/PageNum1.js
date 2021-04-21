@@ -1,29 +1,23 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Data from './Data';
+import data from './data';
+import List from './List';
 
 function PageNum1() {
-  const [state, setstate] = useState(Data);
-  console.log(Data);
+  const [people, setPeople] = useState(data);
+
   return (
     <PageWrapper>
       <Form>
-        <Headline>5 Birthday Today</Headline>
-        <UserListWrapper>
-          {Data &&
-            Data.map((el, key) => {
-              return (
-                <UserList key={key}>
-                  <UserImg src={el.image} alt={el.id} />
-                  <UserInf>
-                    <UserName>{el.name}</UserName>
-                    <UserAge>{el.age} years</UserAge>
-                  </UserInf>
-                </UserList>
-              );
-            })}
-        </UserListWrapper>
-        <FooterBtn>Clear All</FooterBtn>
+        <Headline>{people.length} Birthday Today</Headline>
+        <List people={people} />
+        <FooterBtn
+          onClick={() => {
+            setPeople([]);
+          }}
+        >
+          Clear All
+        </FooterBtn>
       </Form>
     </PageWrapper>
   );
@@ -55,39 +49,6 @@ const Headline = styled.h3`
   font-size: 36px;
   font-weight: 500;
   margin: 30px 0 20px 0;
-`;
-
-const UserListWrapper = styled.ul`
-  padding: 0;
-`;
-
-const UserList = styled.li`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  list-style: none;
-  margin-bottom: 20px;
-`;
-
-const UserImg = styled.img`
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-`;
-
-const UserInf = styled.div`
-  height: 100%;
-  margin: 0px 10px;
-`;
-
-const UserName = styled.b`
-  font-size: 20px;
-`;
-
-const UserAge = styled.p`
-  margin: 10px 0 0 0;
-  font-size: 20px;
-  color: #617d99;
 `;
 
 const FooterBtn = styled.button`
