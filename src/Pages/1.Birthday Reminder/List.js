@@ -2,24 +2,21 @@ import React from 'react';
 import styled from 'styled-components';
 
 function List({ people }) {
-  console.log('얘 데이터' + people);
   return (
-    <>
-      <UserListWrapper>
-        {people.map(people => {
-          const { id, name, age, image } = people;
-          return (
-            <UserList key={id}>
-              <UserImg src={image} alt="userImage" />
-              <UserInf>
-                <UserName>{name}</UserName>
-                <UserAge>{age} years</UserAge>
-              </UserInf>
-            </UserList>
-          );
-        })}
-      </UserListWrapper>
-    </>
+    <UserListWrapper>
+      {people.map(person => {
+        const { id, name, age, image } = person;
+        return (
+          <UserList key={id}>
+            <UserImg src={image} alt="userImage" />
+            <UserInf>
+              <UserName>{name}</UserName>
+              <UserAge>{age} years</UserAge>
+            </UserInf>
+          </UserList>
+        );
+      })}
+    </UserListWrapper>
   );
 }
 

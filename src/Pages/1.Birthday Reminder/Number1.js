@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import data from './data';
+import { data } from './data';
 import List from './List';
 
-function PageNum1() {
+function Number1() {
   const [people, setPeople] = useState(data);
 
   return (
@@ -23,7 +23,7 @@ function PageNum1() {
   );
 }
 
-export default PageNum1;
+export default Number1;
 
 const PageWrapper = styled.main`
   width: 100vw;
